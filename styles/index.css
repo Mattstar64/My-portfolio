@@ -167,7 +167,8 @@ main {
     align-items: center;
 
     width: min(95vw, 900px);
-    height: 85vh;
+    height: auto;
+    min-height: 85vh;
 
     margin: 1rem auto;
     padding: 1.5rem;
@@ -197,6 +198,11 @@ main {
         0 0 20px rgba(254,0,216,0.4);
 
     scroll-behavior: smooth;
+}
+
+main > * {
+    width: 100%;
+    max-width: 900px;
 }
 
 /* =========================
