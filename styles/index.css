@@ -168,7 +168,7 @@ main {
 
     width: min(95vw, 900px);
     height: auto;
-    min-height: 85vh;
+    max-height: 85vh;
 
     margin: 1rem auto;
     padding: 1.5rem;
@@ -409,7 +409,7 @@ main > * {
 
     main {
         width: 95vw;
-        height: 60vh;
+        max-height: 60vh;
         padding: 1rem;
     }
 
