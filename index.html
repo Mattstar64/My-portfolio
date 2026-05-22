@@ -3,11 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link id="theme-style" rel="stylesheet">
-    <script src="scripts/theme.js" defer></script>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <script src="script/aboutme.js" defer></script>
+    <script src="script/network.js" defer></script>
+    <script src="script/main.js" defer></script>
     <title>My portfolio</title>
 </head>
 <body>
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="videos/galaxybackground.mp4" type="video/mp4">
+    </video>
+    <div id="menu">
+        <button id="main-btn" class="menubutton"><strong>Main menu</strong></button>
+        <button id="aboutme-btn" class="menubutton"><strong>About Me</strong></button>
+        <button id="school-btn"class="menubutton"><strong>Studies</strong></button>
+        <button id="career-btn" class="menubutton"><strong>Career</strong></button>
+        <button id="projects-btn" class="menubutton"><strong>Projects</strong></button>
+        <button id="network-btn" class="menubutton"><strong>Network</strong></button>
+    </div>
+    <div id="mobile-menu">
+        <button id="mobile-menu-btn">Menu</button>
+        <div id="mobile-menu-content">
+            <button id="mobile-main-btn" class="mobile-menubutton"><strong>Main menu</strong></button>
+            <button id="mobile-aboutme-btn"class="mobile-menubutton"><strong>About Me</strong></button>
+            <button id="mobile-school-btn" class="mobile-menubutton"><strong>Studies</strong></button>
+            <button id="mobile-career-btn" class="mobile-menubutton"><strong>Career</strong></button>
+            <button id="mobile-projects-btn" class="mobile-menubutton"><strong>Projects</strong></button>
+            <button id="mobile-network-btn" class="mobile-menubutton"><strong>Network</strong></button>
+        </div>
+    </div>
+    <main>
+        
+    </main>
+    <button id="contact_button">Contact me !</button>
+    <div id="contact-modal">
+        <div id="contact-overlay"></div>
+
+        <div id="contact-box">
+            <h2>Contact</h2>
+
+            <a href="assets/CV.pdf" download class="cv-btn">
+                📄 Download my CV
+            </a>
+
+            <div class="contact-info">
+                <p>Email: matteolefin@email.com</p>
+                <p>Phone: +33 6 43 80 77 46</p>
+            </div>
+        </div>
+    </div>
+
+</body>
     
+</div>
 </body>
 </html>

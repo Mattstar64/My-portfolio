@@ -1,0 +1,90 @@
+.pfp-border {
+    position: relative;
+    display: inline-block;
+    padding: 6px;
+    border-radius: 50%;
+    overflow: visible;
+}
+
+.pfp-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 0;
+
+    background: linear-gradient(
+        0deg,
+        rgb(254,0,216),
+        rgb(255,177,250),
+        white,
+        rgb(255,177,250),
+        rgb(254,0,216)
+    );
+
+    background-size: 200% 200%;
+    z-index: 0;
+    animation: spin 6s linear infinite;
+}
+
+.pfp-border::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+
+    background: linear-gradient(
+        0deg,
+        rgb(254,0,216),
+        rgb(255,177,250),
+        white,
+        rgb(255,177,250),
+        rgb(254,0,216)
+    );
+
+    filter: blur(20px);
+    opacity: 0.9;
+
+    z-index: -1;
+    animation: spin 6s linear infinite;
+}
+
+#profilepicture {
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+#highlights{
+    width: 80%;
+    padding: 20px;
+    background-image:
+        linear-gradient(to right, rgb(254,0,216) 0%, rgba(100,0,93,.4) 1%, rgba(100,0,93,.4) 99%, rgb(254,0,216) 100%),
+        linear-gradient(to bottom, rgb(254,0,216) 0%, rgba(100,0,93,.4) 3%, rgba(100,0,93,.4) 97%, rgb(254,0,216) 100%);
+    gap: 15px;
+}
+.highlightbubble{
+    border-bottom: 4px;
+    border-color: white;
+
+}
+.highlightimg{
+    width: 20%;
+    height: 20%;
+    border-radius:20%;
+}
+
+
+
+
+
+
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}

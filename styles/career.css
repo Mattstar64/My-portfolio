@@ -1,0 +1,151 @@
+/* ================= GRID LAYOUT ================= */
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+
+    align-content: start;
+}
+
+/* ================= CARD ================= */
+
+.career-box{
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    padding: 1.2rem;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.08),
+            rgba(100,0,93,0.25)
+        );
+
+    box-shadow:
+        inset 0 0 10px rgba(255,255,255,0.05),
+        0 0 10px rgba(254,0,216,0.4);
+
+    overflow: hidden;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ================= HOLOGRAPHIC BORDER ================= */
+
+.career-box::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+
+    padding: 2px;
+
+    background: linear-gradient(
+        120deg,
+        rgb(254,0,216),
+        rgb(255,177,250),
+        white,
+        rgb(255,177,250),
+        rgb(254,0,216)
+    );
+
+    background-size: 200% 200%;
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    animation: holoBorder 6s linear infinite;
+
+    pointer-events: none;
+}
+
+/* ================= HOVER EFFECT ================= */
+
+.career-box:hover{
+    transform: scale(1.05);
+
+    box-shadow:
+        inset 0 0 12px rgba(255,255,255,0.1),
+        0 0 20px rgba(254,0,216,0.8),
+        0 0 40px rgba(254,0,216,0.4);
+}
+
+/* ================= CONTENT ================= */
+
+.top{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    margin-bottom: 0.5rem;
+}
+
+.top img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 8px rgba(254,0,216,0.6);
+}
+
+.top h3{
+    margin: 0;
+}
+
+.career-box h4{
+    margin-top: 0.5rem;
+    font-weight: normal;
+    opacity: 0.85;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes holoBorder{
+    from { background-position: 0% 50%; }
+    to   { background-position: 200% 50%; }
+}
+
+/* ================= RESPONSIVE MOBILE DESIGN ================= */
+@media (max-width: 600px) {
+
+    main {
+        gap: 1rem;
+    }
+
+    .career-box {
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    .top {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .top img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .top h3 {
+        font-size: 1rem;
+    }
+
+    .career-box h4 {
+        font-size: 0.9rem;
+    }
+}
