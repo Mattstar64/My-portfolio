@@ -8,8 +8,8 @@
 }
 
 html, body {
-    height: 100%;
-    overflow: hidden; /* 🔥 IMPORTANT: prevents double scrolling */
+    height: auto;
+    overflow-x: hidden;
 }
 
 html {
@@ -156,31 +156,33 @@ body {
 }
 
 /* =========================
-   MAIN CONTAINER (FINAL FIX)
+   MAIN CONTAINER (FINAL)
 ========================= */
 main {
     position: relative;
     isolation: isolate;
 
+    /* ✅ layout */
     display: flex;
     flex-direction: column;
-    align-items: center; /* 🔥 center everything horizontally */
+    align-items: center;
 
+    /* ✅ size */
     width: min(95vw, 900px);
-    min-height: 85vh;
+    height: 85vh; /* 🔥 important: fixed height for scroll */
 
     margin: 1rem auto;
     padding: 1.5rem;
 
     border-radius: 16px;
 
-    /* ✅ scrolling happens here ONLY */
+    /* ✅ scrolling ONLY here */
     overflow-y: auto;
     overflow-x: hidden;
 
     scroll-behavior: smooth;
 
-    /* visual style */
+    /* ✅ visual */
     background:
         linear-gradient(
             to right,
@@ -203,11 +205,14 @@ main {
         0 0 20px rgba(254,0,216,0.4);
 }
 
-/* ensure consistent width inside */
+/* =========================
+   CHILD NORMALIZATION
+========================= */
 main > * {
     width: 100%;
     max-width: 700px;
 }
+
 
 /* =========================
    CONTACT BUTTON
