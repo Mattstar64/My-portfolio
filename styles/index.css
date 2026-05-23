@@ -156,17 +156,9 @@ body {
 }
 
 /* =========================
-   MAIN CONTAINER (CRITICAL FIX)
+   MAIN CONTAINER (FIXED)
 ========================= */
 main {
-    position: relative;
-    isolation: isolate;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: stretch; /* 🔥 FIXED (this was breaking centering) */
-
     width: min(95vw, 900px);
     min-height: 85vh;
 
@@ -175,11 +167,16 @@ main {
 
     border-radius: 16px;
 
-    overflow-y: auto;   /* 🔥 ONLY scroll here */
+    /* ✅ scroll only inside main */
+    overflow-y: auto;
     overflow-x: hidden;
 
     scroll-behavior: smooth;
 
+    /* ❌ REMOVE FLEX */
+    display: block;
+
+    /* keep your visual style */
     background:
         linear-gradient(
             to right,
@@ -202,12 +199,12 @@ main {
         0 0 20px rgba(254,0,216,0.4);
 }
 
-/* FIX: proper centering of injected pages */
-main > * {
-    width: 100%;
-    max-width: 900px;
+/* Force proper vertical stacking + centering */
+main * {
+    display: block;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 /* =========================
