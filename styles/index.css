@@ -156,9 +156,16 @@ body {
 }
 
 /* =========================
-   MAIN CONTAINER (FIXED)
+   MAIN CONTAINER (FINAL FIX)
 ========================= */
 main {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 🔥 center everything horizontally */
+
     width: min(95vw, 900px);
     min-height: 85vh;
 
@@ -167,16 +174,13 @@ main {
 
     border-radius: 16px;
 
-    /* ✅ scroll only inside main */
+    /* ✅ scrolling happens here ONLY */
     overflow-y: auto;
     overflow-x: hidden;
 
     scroll-behavior: smooth;
 
-    /* ❌ REMOVE FLEX */
-    display: block;
-
-    /* keep your visual style */
+    /* visual style */
     background:
         linear-gradient(
             to right,
@@ -199,12 +203,10 @@ main {
         0 0 20px rgba(254,0,216,0.4);
 }
 
-/* Force proper vertical stacking + centering */
-main * {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+/* ensure consistent width inside */
+main > * {
+    width: 100%;
+    max-width: 700px;
 }
 
 /* =========================

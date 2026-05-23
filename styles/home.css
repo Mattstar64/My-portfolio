@@ -1,9 +1,11 @@
+/* =========================
+   PROFILE
+========================= */
 .pfp-border {
     position: relative;
     display: inline-block;
     padding: 6px;
     border-radius: 50%;
-    overflow: visible;
 }
 
 .pfp-border::before {
@@ -11,7 +13,6 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 0;
 
     background: linear-gradient(
         0deg,
@@ -54,36 +55,68 @@
     border-radius: 50%;
     position: relative;
     z-index: 1;
+
     width: 150px;
     height: 150px;
     object-fit: cover;
 }
 
-#highlights{
-    width: 80%;
+/* =========================
+   TEXT SPACING
+========================= */
+h1, h2, h3, h4 {
+    margin: 10px 0;
+}
+
+/* =========================
+   HIGHLIGHTS CONTAINER
+========================= */
+#highlights {
+    width: 100%;
+    max-width: 700px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
     padding: 20px;
+
     background-image:
         linear-gradient(to right, rgb(254,0,216) 0%, rgba(100,0,93,.4) 1%, rgba(100,0,93,.4) 99%, rgb(254,0,216) 100%),
         linear-gradient(to bottom, rgb(254,0,216) 0%, rgba(100,0,93,.4) 3%, rgba(100,0,93,.4) 97%, rgb(254,0,216) 100%);
+}
+
+/* =========================
+   HIGHLIGHT CARD
+========================= */
+.highlightbubble {
+    display: flex;
+    align-items: center;
     gap: 15px;
-}
-.highlightbubble{
-    border-bottom: 4px;
-    border-color: white;
 
-}
-.highlightimg{
-    width: 20%;
-    height: 20%;
-    border-radius:20%;
+    padding: 10px;
 }
 
+/* =========================
+   IMAGE
+========================= */
+.highlightimg {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+}
 
+/* =========================
+   TEXT AREA
+========================= */
+.hilighttextzone {
+    text-align: left;
+}
 
-
-
-
-
+/* =========================
+   ANIMATION
+========================= */
 @keyframes spin {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
