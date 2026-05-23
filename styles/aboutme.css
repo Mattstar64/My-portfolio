@@ -20,7 +20,6 @@
     left: 0;
     top: 1%;
 
-    /* space for rail */
     padding-right: 220px;
 
     border-top-left-radius: 100px;
@@ -50,7 +49,8 @@
     z-index: 1;
 }
 
-.pfp-border::before {
+.pfp-border::before,
+.pfp-border::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -69,25 +69,10 @@
 }
 
 .pfp-border::after {
-    content: "";
-    position: absolute;
     inset: -10px;
-    border-radius: 50%;
-
-    background: linear-gradient(
-        0deg,
-        rgb(254,0,216),
-        rgb(255,177,250),
-        white,
-        rgb(255,177,250),
-        rgb(254,0,216)
-    );
-
     filter: blur(20px);
     opacity: 0.9;
-
     z-index: -1;
-    animation: spin 6s linear infinite;
 }
 
 #profilepicture {
@@ -111,19 +96,6 @@
     width: 200px;
 
     pointer-events: none;
-}
-
-#selector-rail::before {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    width: 200px;
-    height: 100%;
-
-    border-radius: 50%;
-    border-right: 1px solid rgba(255,255,255,0.1);
 }
 
 /* =========================
@@ -166,7 +138,6 @@
     max-width: 800px;
     height: 100%;
 
-    /* 👇 CLEAN spacing system */
     padding-left: 140px;
     padding-right: 20px;
 
@@ -184,12 +155,15 @@
     display: flex;
 }
 
+/* 🔥 FIXED FLEX BEHAVIOR */
 .content h2 {
     margin-bottom: 10px;
+    flex-shrink: 0;
 }
 
 .content p {
     flex: 1;
+    min-height: 0; /* ✅ critical fix */
     overflow-y: auto;
 
     scrollbar-width: thin;
@@ -204,7 +178,7 @@
 }
 
 /* =========================
-   RESPONSIVE DESIGN
+   DESKTOP / LARGE SCREENS
 ========================= */
 @media (min-width: 900px) {
 
@@ -250,7 +224,6 @@
 ========================= */
 @media (orientation: portrait) {
 
-    /* hide heavy visuals */
     .pfp-border,
     .rail-arc {
         display: none;
@@ -265,7 +238,6 @@
         padding-right: 0;
     }
 
-    /* bottom navigation */
     #selector-rail {
         position: absolute;
         bottom: 10px;
