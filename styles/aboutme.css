@@ -113,21 +113,6 @@
     pointer-events: none;
 }
 
-.rail-arc {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 200px;
-    height: 100%;
-}
-
-.rail-arc path {
-    fill: none;
-    stroke: rgba(254,0,216,0.6);
-    stroke-width: 20;
-    right: -50px;
-}
-
 #selector-rail::before {
     content: "";
     position: absolute;
@@ -216,6 +201,21 @@
 @keyframes spin {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (min-width: 900px) {
+
+    .content h2 {
+        margin-left: 50px;
+    }
+
+    .content p {
+        margin-left: 85px;
+    }
+
 }
 
 /* =========================
