@@ -16,9 +16,12 @@
     background: rgba(0,0,0,.4);
 
     height: 100%;
-    width: 90%;
-    left: 10%;
+
+    width: 100%;
+    left: 0;
     top: 1%;
+
+    padding-right: 220px;
 
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
@@ -28,7 +31,8 @@
     box-shadow:
         inset 0 0 6px rgba(0,0,0,.8),
         0 0 6px rgba(254,0,216,.4);
-    overflow: clip;
+
+    overflow: hidden;
 }
 
 /* =========================
@@ -43,7 +47,8 @@
     flex-shrink: 0;
 
     left: -60px;
-    width: 40%;
+    height: 100%;
+    width: auto;
     z-index: 1;
 }
 
@@ -189,12 +194,13 @@
     display: flex;
     color: white;
 
-    max-width: 600px;
     text-align: left;
     line-height: 1.5;
 
+    width: 100%;
+    max-width: 800px;
     height: 100%;
-    overflow: hidden; /* ✅ CHANGED (was overflow-y: auto) */
+    overflow: hidden;
     z-index: 99999;
 }
 
@@ -206,7 +212,7 @@
     flex: 1;
     overflow-y: auto;
 
-    min-height: 0; /* ✅ CRITICAL FIX */
+    min-height: 0; 
 
     padding-right: 10px;
 

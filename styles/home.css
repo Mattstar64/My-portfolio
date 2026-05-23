@@ -4,6 +4,8 @@
     padding: 6px;
     border-radius: 50%;
     overflow: visible;
+    width: 150px;
+    height: 150px;
 }
 
 .pfp-border::before {
@@ -54,8 +56,8 @@
     border-radius: 50%;
     position: relative;
     z-index: 1;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -70,11 +72,13 @@
 .highlightbubble{
     border-bottom: 4px;
     border-color: white;
+    flex-direction: column;
+    align-items: center; 
 
 }
 .highlightimg{
-    width: 20%;
-    height: 20%;
+    width: 120px;
+    height: auto;
     border-radius:20%;
 }
 
