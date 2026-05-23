@@ -23,8 +23,8 @@
 
     padding-right: 220px;
 
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
     border-top-right-radius: 200px;
     border-bottom-right-radius: 200px;
 
@@ -206,6 +206,7 @@
 
 .content h2 {
     margin-top: 0;
+    left: 60px;
 }
 
 .content p {
@@ -217,6 +218,7 @@
     padding-right: 10px;
 
     scrollbar-width: thin;
+    left: 160px;
 }
 .content {
     display: none;
