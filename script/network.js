@@ -7,7 +7,7 @@ function initNetwork() {
     /* ------------------ CANVAS RESIZE ------------------ */
     function resizeCanvas() {
         const rect = canvas.getBoundingClientRect();
-        if (!rect.width || !rect.height) return; // 🔥 guard
+        if (!rect.width || !rect.height) return;
 
         const dpr = window.devicePixelRatio || 1;
 
@@ -15,6 +15,7 @@ function initNetwork() {
         canvas.height = rect.height * dpr;
 
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.imageSmoothingEnabled = true;
     }
 
     /* ------------------ GRAPH DATA ------------------ */
@@ -41,12 +42,12 @@ function initNetwork() {
         ["Victor Granger", "Lydie Bas"],
     ];
 
-    /* ------------------ DRAWING ------------------ */
+    /* ------------------ DRAW ------------------ */
     function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         const rect = canvas.getBoundingClientRect();
+        ctx.clearRect(0, 0, rect.width, rect.height);
 
+        // Border
         ctx.beginPath();
         ctx.rect(0, 0, rect.width, rect.height);
         ctx.lineWidth = 4;
@@ -56,9 +57,11 @@ function initNetwork() {
         ctx.stroke();
         ctx.shadowBlur = 0;
 
+        // Edges
         edges.forEach(([a, b]) => {
             const n1 = nodes[a];
             const n2 = nodes[b];
+
             ctx.beginPath();
             ctx.moveTo(n1.x, n1.y);
             ctx.lineTo(n2.x, n2.y);
@@ -67,6 +70,7 @@ function initNetwork() {
             ctx.stroke();
         });
 
+        // Nodes
         Object.entries(nodes).forEach(([name, node]) => {
             ctx.beginPath();
             ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
@@ -96,6 +100,7 @@ function initNetwork() {
             node.x += node.vx;
             node.y += node.vy;
 
+            // Bounds
             if (node.x < node.r) { node.x = node.r; node.vx *= -0.5; }
             if (node.y < node.r) { node.y = node.r; node.vy *= -0.5; }
             if (node.x > rect.width - node.r) { node.x = rect.width - node.r; node.vx *= -0.5; }
@@ -106,26 +111,102 @@ function initNetwork() {
         });
     }
 
+    /* ------------------ DRAG (POINTER EVENTS) ------------------ */
+    let draggingNode = null;
+    let offsetX = 0;
+    let offsetY = 0;
+    let lastX = 0;
+    let lastY = 0;
+
+    function getPointerPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        };
+    }
+
+    function getNodeAt(x, y) {
+        for (const node of Object.values(nodes)) {
+            const dx = x - node.x;
+            const dy = y - node.y;
+            if (Math.sqrt(dx * dx + dy * dy) < node.r + 5) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    canvas.addEventListener("pointerdown", (e) => {
+        const pos = getPointerPos(e);
+        const node = getNodeAt(pos.x, pos.y);
+
+        if (node) {
+            draggingNode = node;
+            offsetX = pos.x - node.x;
+            offsetY = pos.y - node.y;
+
+            lastX = pos.x;
+            lastY = pos.y;
+
+            node.vx = 0;
+            node.vy = 0;
+
+            canvas.setPointerCapture(e.pointerId);
+        }
+    });
+
+    canvas.addEventListener("pointermove", (e) => {
+        if (!draggingNode) return;
+
+        const pos = getPointerPos(e);
+
+        draggingNode.vx = (pos.x - lastX) * 0.3;
+        draggingNode.vy = (pos.y - lastY) * 0.3;
+
+        draggingNode.x = pos.x - offsetX;
+        draggingNode.y = pos.y - offsetY;
+
+        lastX = pos.x;
+        lastY = pos.y;
+    });
+
+    canvas.addEventListener("pointerup", (e) => {
+        draggingNode = null;
+        canvas.releasePointerCapture(e.pointerId);
+    });
+
+    canvas.addEventListener("pointercancel", () => {
+        draggingNode = null;
+    });
+
+    /* ------------------ LOOP ------------------ */
     function loop() {
         physics();
         draw();
         requestAnimationFrame(loop);
     }
 
-    /* ------------------ START (FIXED) ------------------ */
+    /* ------------------ START ------------------ */
     function start() {
         resizeCanvas();
 
         const observer = new ResizeObserver(resizeCanvas);
         observer.observe(canvas);
 
-        loop(); // ✅ ONLY start here
+        loop();
     }
 
-    // ✅ wait for layout + fonts
-    document.fonts.ready.then(() => {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(start);
+    if (document.fonts) {
+        document.fonts.ready.then(() => {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(start);
+            });
         });
-    });
+    } else {
+        start();
+    }
 }
+
+/* ------------------ INIT ------------------ */
+initNetwork();
