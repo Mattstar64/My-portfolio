@@ -50,14 +50,19 @@ document.addEventListener("DOMContentLoaded", () => {
             const activeMobileBtn = document.getElementById(activeMobileId);
             if (activeMobileBtn) activeMobileBtn.classList.add("active");
 
-            // 🔥 Init scripts spécifiques
-            if (path.includes("network.html") && typeof initNetwork === "function") {
-                initNetwork();
-            }
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
 
-            if (path.includes("aboutme.html") && typeof initAboutMe === "function") {
-                initAboutMe();
-            }
+                    if (path.includes("network.html") && typeof initNetwork === "function") {
+                        initNetwork();
+                    }
+
+                    if (path.includes("aboutme.html") && typeof initAboutMe === "function") {
+                        initAboutMe();
+                    }
+
+                });
+            });
 
         } catch (err) {
             main.innerHTML = `<h2>Error</h2><p>Could not load ${path}</p>`;

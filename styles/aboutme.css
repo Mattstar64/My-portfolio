@@ -207,6 +207,7 @@
 .content h2 {
     margin-top: 0;
     left: 60px;
+    position: relative;
 }
 
 .content p {
@@ -219,6 +220,7 @@
 
     scrollbar-width: thin;
     left: 160px;
+    position: relative;
 }
 .content {
     display: none;
