@@ -10,6 +10,8 @@
         0 0 10px rgba(254,0,216,.6);
 
     overflow: hidden;
+
+    touch-action: none;
 }
 
 #network-canvas{

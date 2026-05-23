@@ -303,7 +303,6 @@
         transform: scale(1.5);
     }
 
-    /* ✅ CRITICAL FIX FOR CUT TEXT */
     #content-box {
         padding: 1rem;
         max-width: 100%;
