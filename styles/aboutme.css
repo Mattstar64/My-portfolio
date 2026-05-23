@@ -219,6 +219,7 @@
     padding-right: 10px;
 
     scrollbar-width: thin;
+    left: -100px;
     position: relative;
 }
 .content {
