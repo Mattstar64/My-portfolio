@@ -124,6 +124,7 @@
     fill: none;
     stroke: rgba(254,0,216,0.6);
     stroke-width: 100;
+    right: -50px;
 }
 
 #selector-rail::before {
@@ -231,8 +232,15 @@
     }
 
     #content-box {
-        padding-left: 120px;
-        max-width: 500px;
+        padding-left: 140px;
+    }
+
+    .content h2 {
+        margin-left: 30px;
+    }
+
+    .content p {
+        margin-left: 75px;
     }
 }
 
