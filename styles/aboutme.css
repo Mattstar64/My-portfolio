@@ -124,7 +124,7 @@
 .rail-arc path {
     fill: none;
     stroke: rgba(254,0,216,0.6);
-    stroke-width: 100;
+    stroke-width: 20;
     right: -50px;
 }
 
